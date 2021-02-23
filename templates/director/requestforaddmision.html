@@ -1,0 +1,32 @@
+{% extends 'director/base.html' %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="display-5 text-center text-success"><b><i>Apply for Admission</i></b></h5>
+                    <table class="table table-sm">
+                        <tr class="text-center bg-secondary text-white">
+                            <th>Name</th>
+                            <th>Fathername</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                        </tr>
+                        {% for foo in requestforaddmision %}
+                            <tr class="text-center">
+                            <td>{{ foo.name }}</td>
+                            <td>{{ foo.father_name }}</td>
+                            <td>{{ foo.email }}</td>
+                            <td><a href="{% url 'apseptadmission' foo.st_id %}" class="btn btn-primary btn-sm">Apsept</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

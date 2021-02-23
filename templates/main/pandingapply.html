@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+
+    <div class="alert bg-warning mt-5 text-center text-white">
+        <h5>{{ user.first_name }}  your Admision Application request is panding</h5>
+    </div>
+
+{% endif %}
+{% endblock %}

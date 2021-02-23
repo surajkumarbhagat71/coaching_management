@@ -1,0 +1,38 @@
+{% extends 'student/base.html' %}
+
+{% block content %}
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="card">
+                <div class="card-body">
+                    <table>
+                        <tr>
+                            <th>Course Name</th>
+                            <th>Fee</th>
+                            <th>Due Date</th>
+                            <th>Pay Date</th>
+                            <th>Status</th>
+                        </tr>
+                        {% for foo in payment %}
+                        <tr>
+                            <th>{{ foo.course_id.course_id.name }}</th>
+                            <th>{{ foo.course_id.course_id.fee }}</th>
+                            <th>{{ foo.pay_date }}</th>
+                            {% if foo.status is 0 %}
+                                <td><a href="{% url 'paymentrequest' foo.pay_id %}">Request</a></td>
+                            {% elif foo.status is 1 %}
+                                <td>Panding</td>
+                            {% else foo.status is 2 %}
+                                <td>Paid</td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+{% endblock %}

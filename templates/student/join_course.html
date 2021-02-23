@@ -1,0 +1,36 @@
+{% extends 'student/base.html' %}
+
+{% block content %}
+<div class="container">
+<div class="row">
+    <div class="col-lg-8 mx-auto mt-2">
+        <div class="card">
+            <div class="card-body">
+                <table class="table">
+                    <a href="{% url 'home' %}" class="btn btn-warning mb-2">Join New Course</a>
+                    <tr class="text-white bg-secondary">
+                        <th>Course Name</th>
+                        <th>Fee</th>
+                        <th>Join Date</th>
+                        <th>Status</th>
+                    </tr>
+                    {% for x in course %}
+                    <tr>
+                        <td>{{ x.course_id.name }}</td>
+                        <td>{{ x.course_id.fee }}/:-</td>
+                        <td>{{ x.date }}</td>
+                    {% if x.status is False %}
+                        <td><h5 class="text-success">Request</h5></td>
+                     {% else %}
+                        <td><h5 class="text-success">Active</h5></td>
+                    {% endif %}
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
